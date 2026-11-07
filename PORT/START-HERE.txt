@@ -9,8 +9,8 @@ VS Code starts the local server. Open the Local URL printed in its terminal.
 No dependency installation is required to preview the website.
 Node.js 22 or newer is required (Node is already installed on this computer).
 
-Portfolio: http://127.0.0.1:4174/leonarddacpano/
-Editor:    http://127.0.0.1:4174/leonarddacpano/admin.html
+Portfolio: http://127.0.0.1:4174/Port.Main/
+Editor:    http://127.0.0.1:4174/Port.Main/admin.html
 Stop the preview with Shift+F5.
 
 The F5 preview uses port 4174 so it can run alongside the existing chat preview.

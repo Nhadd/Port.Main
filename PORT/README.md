@@ -2,7 +2,7 @@
 
 A responsive portfolio built with HTML, CSS, and vanilla JavaScript. It preserves the original photographs, project screenshots, CV, contact details, and four public page routes. No framework or runtime package installation is required.
 
-GitHub Pages target: https://nhadd.github.io/leonarddacpano/
+GitHub Pages target: https://nhadd.github.io/Port.Main/
 
 ## Run locally
 
@@ -12,9 +12,9 @@ Use Node.js 22 or newer from the project directory:
 npm run dev
 ```
 
-Portfolio: http://127.0.0.1:4173/leonarddacpano/
+Portfolio: http://127.0.0.1:4173/Port.Main/
 
-Admin: http://127.0.0.1:4173/leonarddacpano/admin.html
+Admin: http://127.0.0.1:4173/Port.Main/admin.html
 
 Use `npm.cmd` on Windows if PowerShell blocks `npm.ps1`. Stop the terminal server with Ctrl+C. The public HTML remains readable directly from disk; the HTTP server is required for JavaScript modules and administration.
 
@@ -57,7 +57,7 @@ Authorization is enforced by the database rules against the owner UID. Hiding th
 
 ## GitHub Pages
 
-All internal page, module, and asset paths are relative, and `.nojekyll` is included. Both the source root and the contents of `dist/` work under `/leonarddacpano/`. Canonical/social URLs use the production target. The original blog routes and CV path are preserved.
+All internal page, module, and asset paths are relative, and `.nojekyll` is included. Both the source root and the contents of `dist/` work under `/Port.Main/`. Canonical/social URLs use the production target. The original blog routes and CV path are preserved.
 
 The recovered directory is a ZIP extraction with no `.git` directory. All 22 original files matched the public repository tree at recovery. The public repository reports default branch `main` and Pages enabled; its recorded deployment uses the target above. Exact authenticated Pages settings and direct live-site HTTP access were unavailable during the original audit.
 
@@ -72,3 +72,13 @@ The original shared-likes database is separate from the new editing backend. It 
 The “E-commerce Website” card was corrected to Joy Mini Grocery based on its actual desktop interface. Unsupported payment, checkout, grade, and attendance claims were removed. No employment dates, current year level, graduation date, qualifications, or project metrics were invented. The unchanged CV retains its original education wording and should be reviewed before use. Supplied social profile URLs were retained; signed-in account availability was not independently confirmed.
 
 If the editing backend is unavailable or its content is invalid, the complete bundled static portfolio remains the public fallback. Export important changes: database edits do not rewrite the HTML source files.
+
+
+## GitHub Actions deployment review
+
+The repository is `Nhadd/Port.Main`; this application lives in `PORT/` inside it.
+The reviewed workflow is at repository-root `.github/workflows/deploy-pages.yml`
+and builds, tests, checks, and uploads only `PORT/dist/`. Run `npm run check:pages`
+after building to validate the production URL and asset graph. See repository-root
+`DEPLOYMENT-INSTRUCTIONS.txt` for review, commit, push, and Pages source settings.
+No Firebase deployment is run by this workflow.
