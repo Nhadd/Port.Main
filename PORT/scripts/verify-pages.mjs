@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {audit,root,pages} from './check.mjs';
 
-export const productionUrl = 'https://nhadd.github.io/Port.Main/';
+export const productionUrl = 'https://nhadd.github.io/leonarddacpano/';
 const publicDirectories = ['assets','cv','pfp','pp'];
 const extensionAllowlist = new Set(['.html','.css','.js','.svg','.jpg','.jpeg','.png','.webp','.gif','.avif','.ico','.woff','.woff2','.ttf','.otf','.pdf','.docx']);
 const secretPatterns = [
@@ -44,7 +44,7 @@ export function verifyPages(base=path.join(root,'dist')) {
     if(/\.(html|css|js|svg)$/i.test(file)) {
       const text=fs.readFileSync(path.join(base,file),'utf8');
       if(secretPatterns.some(pattern=>pattern.test(text)))throw new Error('Potential private credential in public output: '+file);
-      if(text.includes('https://nhadd.github.io/leonarddacpano/'))throw new Error('Old production URL remains in '+file);
+      if(text.includes('https://nhadd.github.io/Port.Main/'))throw new Error('Old production URL remains in '+file);
     }
   }
   for(const file of expected)if(!fileSet.has(file))throw new Error('Missing public output: '+file);
