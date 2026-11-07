@@ -3,7 +3,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { root } from './check.mjs';
 const base = process.argv.includes('--dist') ? path.join(root, 'dist') : root;
-const basePath = '/leonarddacpano';
+const basePath = '/Port.Main';
 const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.docx':'application/vnd.openxmlformats-officedocument.wordprocessingml.document'};
 const allowed = new Set(['index.html','blog1.html','blog2.html','blog3.html','admin.html','.nojekyll']);
 const server = http.createServer(async (request, response) => {
@@ -23,6 +23,6 @@ const server = http.createServer(async (request, response) => {
   } catch { response.writeHead(404).end('Not found'); }
 });
 const port = Number(process.env.PORT || 4173);
-server.listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/leonarddacpano/ (${process.argv.includes('--dist') ? 'production build' : 'source'})`));
+server.listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/Port.Main/ (${process.argv.includes('--dist') ? 'production build' : 'source'})`));
 process.on('SIGINT', () => server.close());
 process.on('SIGTERM', () => server.close());

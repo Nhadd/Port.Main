@@ -18,7 +18,7 @@ export function safeUrl(value, kind = 'href') {
   if (/^https:\/\//i.test(value)) { try { const url = new URL(value); return !url.username && !url.password; } catch { return false; } }
   if (kind === 'href' && /^(mailto:[^\s<>]+@[^\s<>]+|tel:\+?[\d ()-]+)$/i.test(value)) return true;
   if (!value || value.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(value) || value.startsWith('/')) return false;
-  try { const url = new URL(value, 'https://portfolio.invalid/leonarddacpano/'); return url.origin === 'https://portfolio.invalid' && url.pathname.startsWith('/leonarddacpano/'); } catch { return false; }
+  try { const url = new URL(value, 'https://portfolio.invalid/Port.Main/'); return url.origin === 'https://portfolio.invalid' && url.pathname.startsWith('/Port.Main/'); } catch { return false; }
 }
 export function validateTree(node, depth = 0, budget = {count:0}) {
   if (++budget.count > 18000 || depth > 35 || !node || typeof node !== 'object' || Array.isArray(node)) throw new Error('Invalid page structure.');

@@ -1,0 +1,137 @@
+GITHUB PAGES DEPLOYMENT REVIEW — Nhadd/Port.Main
+
+Prepared for main. Public URL: https://nhadd.github.io/Port.Main/
+The repository root contains PORT/. The entry point is PORT/dist/index.html.
+This review copy has not been pushed or deployed. The original Downloads/PORT
+folder, Firebase rules/data, GitHub settings, and remote repository are unchanged.
+
+1. REVIEW THE PROPOSAL
+
+Read .github/workflows/deploy-pages.yml and the accompanying changed-files.txt,
+validation-report.txt, and pages-deployment.patch. The workflow belongs beside
+PORT/ at repository root, not inside PORT/. The ZIP is a changed-files overlay;
+extract it into a separate folder for review before copying into your checkout.
+Do not replace your repository with this whole review folder or add node_modules.
+
+The workflow builds on pushes and pull requests targeting main, and manual runs.
+Pull requests only build/test/upload an artifact. Deployment runs only on main
+pushes or main manual runs. It uploads the contents of PORT/dist/, so PORT/dist
+does not appear in the public URL. Official actions are pinned to verified SHAs.
+Build permission: contents: read. Deployment permissions: pages: write and
+id-token: write. No personal access token or Firebase secret is required.
+The workflow does not change the Pages source setting automatically.
+
+2. CREATE A REAL LOCAL GIT CHECKOUT
+
+The inspected Downloads/PORT folder has no .git directory. In a terminal, choose
+a parent directory where a new Port.Main checkout can be created, then run:
+
+  git clone https://github.com/Nhadd/Port.Main.git
+  cd Port.Main
+  git switch main
+  git pull --ff-only origin main
+  git switch -c review/github-pages-deployment
+
+If you already have a checkout, use it instead, first checking git status and
+preserving any of your own pending changes. The inspected remote main commit was
+50ebc072dae997efa96d029cbde872b6459caca6; if it has changed, review differences
+before applying this proposal.
+
+3. APPLY ONLY THE REVIEWED FILES
+
+Copy the files listed in changed-files.txt from the review folder into the
+checkout, keeping the listed repository-relative paths. Include .github/ even
+if Explorer hides it. Do not delete any existing files. Alternatively, place the
+accompanying patch outside your checkout and, from the repository root, run:
+
+  git apply --check "C:/path/to/pages-deployment.patch"
+  git apply "C:/path/to/pages-deployment.patch"
+
+Replace the example path with the actual patch location. If --check fails, stop
+and inspect the differences rather than forcing it. No Firebase configuration,
+rules, owner account, admin implementation, photographs, or CV need replacing.
+
+4. VALIDATE LOCALLY (NODE.JS 24 LTS RECOMMENDED)
+
+From the repository root:
+
+  cd PORT
+  npm ci --ignore-scripts
+  npm run build
+  npm test
+  npm run check:pages
+  npm run preview
+
+Open http://localhost:4173/Port.Main/ (or the URL printed by the server).
+Check the home page, three journal pages, CV, and header lock/admin sign-in.
+Use Ctrl+C to stop the preview, then return to the repository root:
+
+  cd ..
+  git diff --check
+  git status --short
+  git diff --stat
+  git diff
+
+The build copies known public files without deleting files. The Pages check
+rejects missing assets, stale/unexpected output, root-relative paths, incorrect
+canonical URLs, links escaping /Port.Main/, and common private credential forms.
+Only public website files are uploaded; source, tests, node_modules, Firebase
+rules/configuration files, and the internal build marker are excluded.
+Existing tracked dist files remain tracked. Do not remove dist from the repo.
+
+5. STAGE THE EXACT FILES, COMMIT, AND PUSH A REVIEW BRANCH
+
+From repository root, run these commands (each git add is one line):
+
+  git add -- .github/workflows/deploy-pages.yml DEPLOYMENT-INSTRUCTIONS.txt
+  git add -- PORT/index.html PORT/blog1.html PORT/blog2.html PORT/blog3.html
+  git add -- PORT/assets/content-store.js PORT/package.json PORT/README.md PORT/START-HERE.txt
+  git add -- PORT/scripts/build.mjs PORT/scripts/serve.mjs PORT/scripts/verify-pages.mjs
+  git add -- PORT/dist/index.html PORT/dist/blog1.html PORT/dist/blog2.html PORT/dist/blog3.html PORT/dist/assets/content-store.js
+  git diff --cached --check
+  git diff --cached --stat
+  git diff --cached
+  git commit -m "Configure GitHub Pages deployment for Port.Main"
+  git push -u origin review/github-pages-deployment
+
+Open a pull request from review/github-pages-deployment into main at:
+https://github.com/Nhadd/Port.Main/compare/main...review/github-pages-deployment
+Review the diff and passing build checks. The deploy job is skipped on the PR.
+Do not merge until you are ready to publish the reviewed changes.
+
+6. SWITCH PAGES FROM BRANCH SOURCE TO GITHUB ACTIONS
+
+After reviewing and BEFORE merging to main (so the legacy branch publisher does
+not publish the merge), open https://github.com/Nhadd/Port.Main/settings/pages
+with repository admin/maintainer access. Under Build and deployment, change
+Source from "Deploy from a branch" to "GitHub Actions". Save if prompted.
+Do not create an additional starter workflow; this proposal already supplies it.
+This may expose a gap until the first successful Actions deployment, so perform
+the source change and approved merge together when ready.
+
+7. PUBLISH ONLY AFTER YOUR REVIEW
+
+Merge the approved PR into main. This push triggers the build and deploy jobs.
+Go to Actions > Deploy portfolio to GitHub Pages and inspect the run. The build
+must pass before the github-pages deployment starts. A later deliberate manual
+run on main also deploys: Actions > workflow > Run workflow > main.
+
+When successful, open https://nhadd.github.io/Port.Main/ and check:
+  /Port.Main/blog1.html
+  /Port.Main/blog2.html
+  /Port.Main/blog3.html
+  /Port.Main/admin.html
+  /Port.Main/cv/MyCV.docx
+
+The Firebase host remains nhadd.github.io; the changed project path does not
+change that origin. Backend settings, owner checks, authenticated editing and
+publishing, and security rules are preserved. The Firebase web configuration is
+public client configuration, not a service-account/private key. Never commit
+passwords, access/refresh tokens, service-account JSON, or private keys.
+No live admin publish, password reset, contact submission, or Firebase deployment
+was performed as part of this review. Actual GitHub-hosted deployment remains
+unverified until you approve and run it.
+
+Official guidance:
+https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
