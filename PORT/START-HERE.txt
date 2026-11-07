@@ -1,0 +1,41 @@
+LEONARD DACPANO PORTFOLIO — VS CODE HANDOFF
+
+Open this folder in VS Code (File > Open Folder), or open the adjacent
+"Leonard Portfolio.code-workspace" file.
+
+RUN
+Press F5 and select "Preview portfolio" if prompted.
+VS Code starts the local server. Open the Local URL printed in its terminal.
+No dependency installation is required to preview the website.
+Node.js 22 or newer is required (Node is already installed on this computer).
+
+Portfolio: http://127.0.0.1:4174/leonarddacpano/
+Editor:    http://127.0.0.1:4174/leonarddacpano/admin.html
+Stop the preview with Shift+F5.
+
+The F5 preview uses port 4174 so it can run alongside the existing chat preview.
+For terminal use, npm run dev uses port 4173 by default.
+
+ADMIN
+Username: nhaddacpano00@gmail.com
+Use the password you created privately in Firebase. No password is included.
+Click the small outline lock in the header to open the editor.
+The Firebase backend is already configured; do not create another project.
+Publishing editor changes saves to Firebase and does not push GitHub.
+
+CHECK, TEST, BUILD
+npm run check
+npm ci
+npm test
+npm run build
+
+Only tests require the development packages installed by npm ci.
+The package lockfile is included. Generated dist/ and node_modules/ are ignored
+by Git. This folder has no Git history and nothing has been pushed or deployed
+to GitHub Pages.
+
+Everything needed is here: the five HTML pages, CSS/JS, outline lock SVG,
+photographs, project screenshots, original Word CV, Firebase configuration
+and rules, build/preview tools, tests, and maintenance documentation.
+See README.md and firebase/README.md for the full details.
+

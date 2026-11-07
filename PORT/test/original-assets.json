@@ -1,0 +1,62 @@
+[
+  {
+    "path": "cv/MyCV.docx",
+    "sha256": "af716159984552892eb637d35f23311b7538c1faa4f33e0854f4ead1194839b8"
+  },
+  {
+    "path": "pfp/476107523_1339320820417717_2798092553384714316_n.jpg",
+    "sha256": "3ac50a4b0d5924d2bcd627f64e7604a5a53fc39f5b88e1f32089eda9ee51a142"
+  },
+  {
+    "path": "pfp/7582dad9-011b-4e8b-b263-87f59ca2c7c4.jpg",
+    "sha256": "f417fe2e353843f338fde6a7a8e95314c61cd202412f63518bd5b4cb3f94d028"
+  },
+  {
+    "path": "pfp/PfpPort.jpg",
+    "sha256": "820f38111fd530abffb6c5e3b381747dddbb04c394f6e5321fa982920abab669"
+  },
+  {
+    "path": "pp/2463ce69-86ec-4d91-a77b-896de515af8d.jpg",
+    "sha256": "aa0561fcbdc9b6515c58a4b8b25588255bb458303794d54212c3c75ce52b9a1b"
+  },
+  {
+    "path": "pp/Picture1.png",
+    "sha256": "8b2f397448b05b0a6b9295843b89ed38eb5f4324254af0f4dec93234e4459272"
+  },
+  {
+    "path": "pp/bfpojt.jpg",
+    "sha256": "08c54e18171e285ad37965b699f0c1a8fcd5f56a46e3c4e62898669b2d1fc1a5"
+  },
+  {
+    "path": "pp/class.jpg",
+    "sha256": "07ed9332ff228f7b1bba12f4ca30646cb7da0e53d907f3d27e34772f4d132d88"
+  },
+  {
+    "path": "pp/classmate.jpg",
+    "sha256": "f6b4cdf88f25d2515478084994ac2b443dac33c1593d01147d90b959c1c86f8a"
+  },
+  {
+    "path": "pp/game.jpg",
+    "sha256": "7cb1b1d10dcd187ecfc519b4948928f3addbb526f8b90beed8e7a27d25a45ce1"
+  },
+  {
+    "path": "pp/gamehome.jpg",
+    "sha256": "3755502f2a2590cd4b749d8c96a6d03f055ee53100d211c35140cf631398ed84"
+  },
+  {
+    "path": "pp/logorev.jpg",
+    "sha256": "f48783a9968d607601a31c8cce64055904bf585872542c63d10eec0fdad87695"
+  },
+  {
+    "path": "pp/mbapp.png",
+    "sha256": "483cdf2ceb7bb8a9d2e0754ba2c99e95c515fc1a8b5fef99adaeed9d31ae633d"
+  },
+  {
+    "path": "pp/personel.jpg",
+    "sha256": "5328ac1cfa2c0971f762680f641caa3bb56e421d093ee041413bb3426fa744d9"
+  },
+  {
+    "path": "pp/revwordgroup.jpg",
+    "sha256": "df5fedf9e42a9704bf8c08320dde366a1903d60324fc3754fe6cbc062fcad294"
+  }
+]

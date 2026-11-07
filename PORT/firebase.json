@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "providers": {
+      "emailPassword": true
+    }
+  },
+  "database": {
+    "rules": "firebase/database.rules.json"
+  }
+}
