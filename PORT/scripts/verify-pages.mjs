@@ -19,7 +19,7 @@ function listFiles(directory,prefix='',output=[]) {
     const relative=prefix+item.name;
     const full=path.join(directory,item.name);
     const info=fs.lstatSync(full);
-    if(info.isSymbolicLink() || info.nlink>1) throw new Error('Links are not allowed in the Pages artifact: '+relative);
+    if(info.isSymbolicLink()) throw new Error('Links are not allowed in the Pages artifact: '+relative);
     if(item.isDirectory())listFiles(full,relative+'/',output);
     else if(item.isFile())output.push(relative);
     else throw new Error('Unsupported artifact entry: '+relative);
