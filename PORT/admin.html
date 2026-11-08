@@ -1,46 +1,221 @@
 <!doctype html>
-<html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><meta name="description" content="Private content editor for Leonard Dacpano’s portfolio."><title>Portfolio Studio — Leonard Dacpano</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/admin.css"><script src="assets/theme.js"></script><script type="module" src="assets/admin.js"></script></head><body class="admin-page"><a class="skip-link" href="#main">Skip to content</a><header class="admin-header"><a href="index.html" class="brand" aria-label="Leonard Dacpano home"><span class="brand-mark">ld<span>.</span></span><span>PORTFOLIO<br>STUDIO</span></a><a class="text-link" href="index.html">← Back to portfolio</a></header><main id="main">
-<section id="login-panel" class="login-panel" aria-labelledby="login-title">
-  <h1 id="login-title">Make it <em>yours.</em></h1>
-  <p>Sign in to update your portfolio. Your email address is your admin username.</p>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Private content editor for Leonard Dacpano’s portfolio.">
+  <title>Portfolio Studio — Leonard Dacpano</title>
 
-  <form id="login-form" class="login-form">
-    <label for="admin-username">Username / email</label>
-    <input
-      id="admin-username"
-      name="username"
-      type="email"
-      autocomplete="username"
-      placeholder="Your admin email"
-      required
-      maxlength="254"
-    >
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/admin.css">
 
-    <label for="admin-password">Password</label>
-    <input
-      id="admin-password"
-      name="password"
-      type="password"
-      autocomplete="current-password"
-      placeholder="Your password"
-      required
-    >
+  <script src="assets/theme.js"></script>
+  <script type="module" src="assets/admin.js"></script>
+</head>
 
-    <button class="button button-primary" id="login-button" type="submit">
-      Unlock portfolio <span aria-hidden="true">↗</span>
-    </button>
+<body class="admin-page">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <button class="password-reset" id="password-reset" type="button">
-      Set or reset password
-    </button>
+  <header class="admin-header">
+    <a href="index.html" class="brand" aria-label="Leonard Dacpano home">
+      <span class="brand-mark">ld<span>.</span></span>
+      <span>PORTFOLIO<br>STUDIO</span>
+    </a>
+    <a class="text-link" href="index.html">← Back to portfolio</a>
+  </header>
 
-    <p id="login-status" role="status">
-      Only an account with owner access can publish changes.
-    </p>
-  </form>
+  <main id="main">
+    <section id="login-panel" class="login-panel" aria-labelledby="login-title">
+      <h1 id="login-title">Make it <em>yours.</em></h1>
+      <p>Sign in to update your portfolio. Your email address is your admin username.</p>
 
-  <p class="login-help">
-    No account registration is available here. Use the administrator account
-    configured for this portfolio.
-  </p>
-</section>
+      <form id="login-form" class="login-form">
+        <label for="admin-username">Username / email</label>
+        <input
+          id="admin-username"
+          name="username"
+          type="email"
+          autocomplete="username"
+          placeholder="Your admin email"
+          required
+          maxlength="254"
+        >
+
+        <label for="admin-password">Password</label>
+        <input
+          id="admin-password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Your password"
+          required
+        >
+
+        <button class="button button-primary" id="login-button" type="submit">
+          Unlock portfolio <span aria-hidden="true">↗</span>
+        </button>
+
+        <button class="password-reset" id="password-reset" type="button">
+          Set or reset password
+        </button>
+
+        <p id="login-status" role="status">
+          Only an account with owner access can publish changes.
+        </p>
+      </form>
+
+      <p class="login-help">
+        No account registration is available here. Use the administrator account
+        configured for this portfolio.
+      </p>
+    </section>
+
+    <section id="editor-app" hidden aria-label="Portfolio editor">
+      <div class="editor-toolbar">
+        <label for="page-select">Editing</label>
+        <select id="page-select">
+          <option value="index">Portfolio homepage</option>
+          <option value="blog1">BFP field note</option>
+          <option value="blog2">STI field note</option>
+          <option value="blog3">RevWord field note</option>
+        </select>
+
+        <button id="preview-toggle" type="button">Preview draft</button>
+        <button id="save-draft" type="button">Save device draft</button>
+        <span id="admin-account" class="admin-account"></span>
+        <button id="publish" type="button">Publish changes</button>
+        <button id="sign-out" type="button">Sign out</button>
+      </div>
+
+      <p id="editor-status" class="editor-status" role="status">
+        Loading editor…
+      </p>
+
+      <div class="editor-layout">
+        <aside class="editor-tools" aria-label="Content tools">
+          <h2>Page details</h2>
+
+          <label for="page-title">Browser title</label>
+          <input id="page-title" maxlength="180">
+
+          <label for="page-description">Search description</label>
+          <textarea id="page-description" maxlength="1000" rows="3"></textarea>
+
+          <div id="new-item-tools">
+            <h3>Add content</h3>
+
+            <label for="new-item-type">New item</label>
+            <select id="new-item-type">
+              <option value="project">Project</option>
+              <option value="journal">Journal card</option>
+              <option value="skill">Skill group</option>
+              <option value="journey">Journey entry</option>
+            </select>
+
+            <button id="add-item" type="button">Add item +</button>
+          </div>
+
+          <h3>Selected content</h3>
+          <p id="selected-name">Click something in the page</p>
+
+          <div id="text-field" hidden>
+            <label for="selected-text">Text</label>
+            <textarea id="selected-text" maxlength="15000" rows="5"></textarea>
+            <p>Or edit text directly in the page.</p>
+          </div>
+
+          <div id="image-fields" hidden>
+            <label for="image-url">Image URL or file path</label>
+            <input id="image-url">
+
+            <label for="image-alt">Image description</label>
+            <input id="image-alt" maxlength="1000">
+
+            <label for="image-file">Upload image (under 300 KB)</label>
+            <input
+              id="image-file"
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/gif"
+            >
+          </div>
+
+          <div id="link-field" hidden>
+            <label for="link-url">Link destination</label>
+            <input id="link-url">
+          </div>
+
+          <div id="placeholder-field" hidden>
+            <label for="placeholder">Field hint</label>
+            <input id="placeholder" maxlength="1000">
+          </div>
+
+          <div id="block-actions" hidden>
+            <h3>Selected item</h3>
+
+            <div id="category-field" hidden>
+              <label for="project-category">Project category</label>
+              <select id="project-category">
+                <option value="desktop">Desktop</option>
+                <option value="mobile">Mobile</option>
+              </select>
+            </div>
+
+            <div class="block-buttons">
+              <button type="button" data-block-action="duplicate">Duplicate</button>
+              <button type="button" data-block-action="remove">Remove</button>
+              <button type="button" data-block-action="up">Move up ↑</button>
+              <button type="button" data-block-action="down">Move down ↓</button>
+            </div>
+          </div>
+
+          <h3>Accent colors</h3>
+
+          <label for="accent-dark">Dark theme</label>
+          <input
+            id="accent-dark"
+            type="color"
+            name="accentDark"
+            value="#c0a8f5"
+          >
+
+          <label for="accent-light">Light theme</label>
+          <input
+            id="accent-light"
+            type="color"
+            name="accentLight"
+            value="#6840a1"
+          >
+
+          <h3>Draft backup</h3>
+          <p>
+            Device drafts stay private to this browser.
+            Publishing updates the public portfolio.
+          </p>
+
+          <div class="draft-buttons">
+            <button id="export-draft" type="button">Export JSON</button>
+            <button id="reset-page" type="button">Discard page edits</button>
+            <button id="restore-draft" type="button" hidden>
+              Restore device draft
+            </button>
+          </div>
+
+          <label for="import-draft">Import a draft backup</label>
+          <input id="import-draft" type="file" accept="application/json,.json">
+        </aside>
+
+        <div class="editor-canvas">
+          <iframe
+            id="editor-frame"
+            title="Portfolio content editor"
+            src="about:blank"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
